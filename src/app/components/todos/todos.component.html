@@ -1,0 +1,32 @@
+<div class="todos">
+  <input type="text" [(ngModel)]="titleName" (keydown.enter)="handleAddTodo()" />
+
+  <div *ngFor="let todo of todos$ | async">
+    <div class="todos-container">
+      <span
+        class="todo"
+        *ngIf="todo.id !== editedTodo?.id"
+        (dblclick)="handleToggleEditMode(todo)"
+        [ngClass]="todo.complete ? ' completed' : ''"
+        >{{ todo.title }}</span
+      >
+
+      <input
+        type="text"
+        name="title"
+        (blur)="editedTodo = null"
+        [value]="editedTodo.title"
+        (input)="handleChange($event)"
+        *ngIf="todo.id === editedTodo?.id"
+        (keydown.enter)="handleSaveTodo()"
+        (keydown.escape)="editedTodo = null"
+      />
+
+      <input name="complete" type="checkbox" [checked]="todo.complete" (click)="handleChangeChecked(todo, $event)" />
+
+      <span (click)="handleRemove(todo.id)">REMOVE</span>
+    </div>
+  </div>
+
+  <button (click)="handleAddTodo()" [disabled]="!titleName">Add New todo</button>
+</div>

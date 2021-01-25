@@ -1,0 +1,19 @@
+.todos {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  background-color: red;
+}
+
+.todos-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo {
+  &.completed {
+    text-decoration: line-through;
+  }
+}
