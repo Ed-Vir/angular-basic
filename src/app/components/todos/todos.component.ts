@@ -8,6 +8,16 @@ import { TodosStateType } from 'src/app/store/todos/types';
 import { selectAllTodos } from 'src/app/store/todos/selectors';
 import { addTodo, removeTodo, updateTodo } from 'src/app/store/todos/actions';
 
+// TODO:
+// 1. Focus on input field when you turn into edit mode;
+// 2. If you in edit mode and click on Complete checkbox --> go to !editMode and mark todo as completed;
+// ---------------------
+// There is better to use methods without arrow function syntax, like:
+//  handleToggleEditMode(todo: TodosTypes): void {
+//    this.editedTodo = todo;
+//  };
+// Also don't forget to indicate return type;
+// And it would be great if you specify all methods and properties - private or public;
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
